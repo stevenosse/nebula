@@ -31,6 +31,7 @@ dependencies:
   provider: ^4.3.2+2
   dartz: ^0.9.2
   dio: ^3.0.10
+  flutter_dotenv: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -48,8 +49,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
