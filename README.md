@@ -51,3 +51,12 @@ Where you store the custom widgets you'll create
 - Clone this repository
 - run `flutter packages get` from the command line inside the project folder to install packages
 - Run the app from your preferred IDE
+
+## Features
+
+- Provider
+- DotEnv
+- Dio
+
+## Contribute
+I welcome any contribution on this repository.
