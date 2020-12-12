@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:nebula/core/my_app.dart';
-import 'package:nebula/providers/theme_provider.dart';
+import 'package:nebula/core/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() async {

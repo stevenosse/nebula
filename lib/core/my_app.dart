@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:nebula/core/providers/theme_provider.dart';
+import 'package:nebula/core/resources/dio_wrapper.dart';
 import 'package:nebula/core/routes.dart';
-import 'package:nebula/core/utils/networker.dart';
-import 'package:nebula/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: DotEnv().env['APP_NAME'],
       theme: context.watch<ThemeProvider>().appTheme,
       routes: routes,
-      navigatorKey: worker.navigatorKey,
+      navigatorKey: dioWrapper.navigatorKey,
     );
   }
 }
