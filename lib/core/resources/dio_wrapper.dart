@@ -1,6 +1,8 @@
+import 'package:device_info/device_info.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:package_info/package_info.dart';
 
 class DioWrapper {
   Dio _dio;
@@ -14,12 +16,29 @@ class DioWrapper {
   ///
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
+  AndroidDeviceInfo androidDeviceInfo;
+  PackageInfo packageInfo;
+
+  Future<void> init() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    androidDeviceInfo = await deviceInfo.androidInfo;
+    packageInfo = await PackageInfo.fromPlatform();
+
+  }
+
   DioWrapper() {
     _options = BaseOptions(
       baseUrl: DotEnv().env["ENDPOINT"],
       contentType: "application/json",
       headers: {
         "Accept": "application/json",
+        "X-Device-UDID": "${androidDeviceInfo.id}",
+        "X-Device-OS": "Android",
+        "X-Device-OS-Version": "${androidDeviceInfo.version}",
+        "X-Device-Manufacturer": "${androidDeviceInfo.manufacturer}",
+        "X-Device-Model": "${androidDeviceInfo.model}",
+        "X-Device-FCM-Token": "", // TODO: get firebase token
+        "X-Device-App-Version": "${packageInfo.version}",
       },
     );
     _dio = Dio(_options);
