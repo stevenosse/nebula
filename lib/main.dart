@@ -11,9 +11,6 @@ void main() async {
   /// Initializing DotEnv plugin
   await DotEnv().load('.env');
 
-  /// Initialize device info
-  await dioWrapper.init();
-
   runApp(
     MultiProvider(
       providers: [
